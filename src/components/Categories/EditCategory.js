@@ -20,7 +20,7 @@ const EditCategory = ({categoryId}) => {
   return (
     <div className="col-md-12 col-lg-4">
       <h3>Edit Category</h3>
-      {category && category.data && (
+      {category&& (
           <form onSubmit={handleSubmit(categorySubmitHandler)}>
           <div className="mb-4">
             <label htmlFor="product_name" className="form-label">
@@ -32,14 +32,14 @@ const EditCategory = ({categoryId}) => {
               placeholder="Type here"
               className="form-control py-3"
               id="product_name"
-              value={category.data.name}
             />
           </div>
           <div className="mb-4">
             <label className="form-label">Parent Category</label>
             <select className="form-control" 
-            name="parentCategoryId"
+            name="parentId"
                {...register("parentCategoryId")}
+               value={category.parentId}
             >
               <option value={0}>None</option>
               {categories?.map(cate=>(
@@ -56,7 +56,7 @@ const EditCategory = ({categoryId}) => {
            <div className="mb-4">
            <label htmlFor="isFeatured" className="form-label">Is Featured</label>
             <input name="isFeatured" {...register("isFeatured")}
-             type="checkbox" id="isFeatured"   />
+             type="checkbox" id="isFeatured" checked={category.isFeatured? true:false}/>
           </div>
           {errors.exampleRequired && <span>This field is required</span>}
           <div className="d-grid">

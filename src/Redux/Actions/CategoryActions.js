@@ -53,7 +53,7 @@ export const categoryEditAction=(id)=>async(dispatch)=>{
     try {
         dispatch({type:CATEGORY_EDIT_REQUEST});
         const {data} = await axios.get(`${BASE_URL}/category/${id}`)
-        dispatch({type:CATEGORY_EDIT_SUCCESS,payload:data});
+        dispatch({type:CATEGORY_EDIT_SUCCESS,payload:data.data});
     } catch (error) {
         dispatch({type:CATEGORY_EDIT_FAIL,payload:error});
     }
